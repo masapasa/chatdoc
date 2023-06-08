@@ -1,27 +1,56 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+
+main {
+  /* Use the mixin instead of @apply */
+  @include max-width-and-margin;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+header, section {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+a {
+  color: #1a202c;
+  transition: color 0.2s ease-in-out;
+
+  &:hover {
+    color: #4a5568;
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+/* Define a mixin for the scrollbar styles */
+@mixin scrollbar {
+  &::-webkit-scrollbar {
+    width: 2px;
+    height: 2px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: #fff;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #cbd5e0;
+    border-radius: 0.125rem;
+    border: 0.125rem solid #fff;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background-color: #a0aec0;
+  }
+}
+
+/* Use the scrollbar mixin */
+.custom-prose {
+  max-height: 60vh;
+  overflow-y: auto;
+  padding-right: 1rem;
+  @include scrollbar;
 }
