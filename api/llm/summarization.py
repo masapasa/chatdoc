@@ -2,11 +2,11 @@ import os
 
 import guidance
 import openai
-import dotenv
-from api.logger import get_logger
-dotenv.load_dotenv(verbose=True)
-logger = get_logger(__name__)
 
+from api.logger import get_logger
+import dotenv
+logger = get_logger(__name__)
+dotenv.load_dotenv(verbose=True)
 openai_api_key = os.environ.get("OPENAI_API_KEY")
 openai.api_key = openai_api_key
 summary_llm = guidance.llms.OpenAI('gpt-3.5-turbo', caching=False)

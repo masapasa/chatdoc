@@ -4,53 +4,46 @@
 
 
 main {
-  /* Use the mixin instead of @apply */
-  @include max-width-and-margin;
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
+  @apply max-w-screen-xl mx-auto flex flex-col;
 }
 
-header, section {
-  padding-left: 1rem;
-  padding-right: 1rem;
+header,
+section {
+  @apply px-5 md:px-10;
 }
+/* a {
+  @apply hover: text-primary dark:hover:text-gray-200 transition-colors;
+} */
 
-a {
-  color: #1a202c;
-  transition: color 0.2s ease-in-out;
-
-  &:hover {
-    color: #4a5568;
-  }
-}
-
-/* Define a mixin for the scrollbar styles */
-@mixin scrollbar {
-  &::-webkit-scrollbar {
-    width: 2px;
-    height: 2px;
+@layer utilities {
+  .scrollbar::-webkit-scrollbar {
+    @apply w-2 h-2;
   }
 
-  &::-webkit-scrollbar-track {
-    background-color: #fff;
+  .scrollbar::-webkit-scrollbar-track {
+    /* border-radius: 5px; */
+    /* background: #fff; */
+    @apply bg-white dark:bg-black;
   }
 
-  &::-webkit-scrollbar-thumb {
-    background-color: #cbd5e0;
-    border-radius: 0.125rem;
-    border: 0.125rem solid #fff;
+  .scrollbar::-webkit-scrollbar-thumb {
+    /* background: #000; */
+    /* border-radius: 100vh; */
+    /* border: 3px solid #fff; */
+    @apply bg-gray-200 dark:bg-gray-600 border border-white rounded-sm;
   }
 
-  &::-webkit-scrollbar-thumb:hover {
-    background-color: #a0aec0;
+  .scrollbar::-webkit-scrollbar-thumb:hover {
+    /* background: #000; */
+    @apply bg-gray-500;
   }
 }
 
-/* Use the scrollbar mixin */
 .custom-prose {
   max-height: 60vh;
+  /* Adjust this value based on the desired maximum height */
   overflow-y: auto;
+  /* Enable vertical scroll if the content exceeds the maximum height */
   padding-right: 1rem;
-  @include scrollbar;
+  /* Optional: Add some padding if the scrollbar appears, so the text is not squished */
 }

@@ -6,6 +6,7 @@ interface DocumentDataProps {
   documentName: string;
 }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 type DocumentDetails = any;
 //TODO: review this component logic, types and purposes
 
